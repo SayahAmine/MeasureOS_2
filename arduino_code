@@ -1,0 +1,32 @@
+float temp = 36.0;
+float prev_temp = 36.0;
+
+void setup() {
+  Serial.begin(9600);
+  randomSeed(analogRead(0)); // better randomness
+}
+
+float generate_temperature() {
+  return 36.0 + random(0, 50) / 10.0; // 36.0 → 41.0
+}
+
+void loop() {
+  prev_temp = temp;
+  temp = generate_temperature();
+
+
+  Serial.print("TEMP:");
+  Serial.println(temp);
+
+
+  if (prev_temp <= 37.0 && temp > 37.0) {
+    Serial.println("ALERT:S1");
+  }
+
+
+  if (temp > 39.0) {
+    Serial.println("ALERT:S2");
+  }
+
+  delay(2000); // every 2 sec
+}
