@@ -1,6 +1,15 @@
-cmake_minimum_required(VERSION 4.1)
-project(MeasureOS_2)
+cmake_minimum_required(VERSION 3.26)
+project(MeasureOS_2 C)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_C_STANDARD 11)
 
-add_executable(MeasureOS_2 main.c)
+include_directories(${CMAKE_SOURCE_DIR})
+
+add_executable(MeasureOS_2
+        main.c
+        Kernel.c
+        serial.c
+        sensors.c
+        injector.c
+        events.h
+)
